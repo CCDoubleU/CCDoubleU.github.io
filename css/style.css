@@ -91,7 +91,11 @@ h2 {
     margin-bottom: 1.3em;
     text-transform: uppercase;
 }
-.centerTable { margin: 0px auto; }
+.centerTable { 
+	margin: 0px auto; 
+	table-layout:fixed;
+	width: 80%;
+}
 th {
    color: #fff;
    font-size: 16px;
