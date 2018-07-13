@@ -92,7 +92,7 @@ h2 {
     text-transform: uppercase;
 }
 table {
-   align: center;
+   align: "center";
    width: 24%;
 }
 th {
