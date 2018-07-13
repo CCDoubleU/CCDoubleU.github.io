@@ -18,152 +18,8 @@
 		});	  
 	});
 	</script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/xlsx.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-<script>
-  
-  var script_url = "https://script.google.com/macros/s/AKfycbxq5Eir6zXWHvTyQjMYxF0BQr7TCcSRIGY2m1QGBoIgOF_iTR4/exec";
-  
-  // Make an AJAX call to Google Script
-  function insert_value() {
-    
-	$("#re").css("visibility","hidden");
-	 document.getElementById("loader").style.visibility = "visible";
-	$('#mySpinner').addClass('spinner');
 
-var id1=	$("#id").val();
-	var name= $("#name").val();
-	
-	
-    var url = script_url+"?callback=ctrlq&name="+name+"&id="+id1+"&action=insert";
-  
-
-    var request = jQuery.ajax({
-      crossDomain: true,
-      url: url ,
-      method: "GET",
-      dataType: "jsonp"
-    });
-
-  }
-
-
-  
-  
- 
-  
-  
-  function update_value(){
-	$("#re").css("visibility","hidden");
-     document.getElementById("loader").style.visibility = "visible";
-	
-	
-var id1=	$("#id").val();
-	var name= $("#name").val();
-	
-	
-	
-    var url = script_url+"?callback=ctrlq&name="+name+"&id="+id1+"&action=update";
-  
-
-    var request = jQuery.ajax({
-      crossDomain: true,
-      url: url ,
-      method: "GET",
-      dataType: "jsonp"
-    });
-
-	
-  }
-
-  
- 
-  
-  
-  function delete_value(){
-	$("#re").css("visibility","hidden");
-     document.getElementById("loader").style.visibility = "visible";
-	$('#mySpinner').addClass('spinner');
-var id1=	$("#id").val();
-	var name= $("#name").val();
-	
-	
-    var url = script_url+"?callback=ctrlq&name="+name+"&id="+id1+"&action=delete";
-  
-
-    var request = jQuery.ajax({
-      crossDomain: true,
-      url: url ,
-      method: "GET",
-      dataType: "jsonp"
-    });
-
-  }
-
-
-  
-  
-  // print the returned data
-  function ctrlq(e) {
-  
-	
-	$("#re").html(e.result);
-	$("#re").css("visibility","visible");
-	read_value();
-	
-  }
-  
-  
-
-  
-function read_value() {
-
-$("#re").css("visibility","hidden");
-   
-   document.getElementById("loader").style.visibility = "visible";
- var url = script_url+"?action=read";
-
-$.getJSON(url, function (json) {
-
-    // Set the variables from the results array
-   
-   
-  
-
-        // CREATE DYNAMIC TABLE.
-        var table = document.createElement("table");
-
-		
-
-        var header = table.createTHead();
-		var row = header.insertRow(0);     
-		var cell1 = row.insertCell(0);
-		var cell2 = row.insertCell(1);
-	
-		cell1.innerHTML = "<b>ID</b>";
-		cell2.innerHTML = "<b>Name</b>";
-        
-        // ADD JSON DATA TO THE TABLE AS ROWS.
-        for (var i = 0; i < json.records.length; i++) {
-
-            tr = table.insertRow(-1);
-				var tabCell = tr.insertCell(-1);
-                tabCell.innerHTML = json.records[i].ID;
-				tabCell = tr.insertCell(-1);
-				tabCell.innerHTML = json.records[i].NAME;
-            }
-      
-
-        // FINALLY ADD THE NEWLY CREATED TABLE WITH JSON DATA TO A CONTAINER.
-        var divContainer = document.getElementById("showData");
-        divContainer.innerHTML = "";
-        divContainer.appendChild(table);
-		document.getElementById("loader").style.visibility = "hidden";
-		$("#re").css("visibility","visible");
-    });
-	}
-  
-  </script>
 </head>
 <body>
 	<h1>OASIS LEADERBOARD</h1>
@@ -171,12 +27,23 @@ $.getJSON(url, function (json) {
 		<div class="content-wthree">
 		<div class="circle-w3layouts"></div>
 			<h2>Leaderboards</h2>
-			<div id="showData"></div>
-			</div>
+			<table>
+			  <thead>
+			    <th>Timestamp</th>
+			    <th>Name</th>
+			    <th>Score</th>
+			  </thead>
+			  <tbody sheetsu="https://sheetsu.com/apis/v1.0/020b2c0f" sheetsu-limit="3">
+			    <tr>
+			      <td>{{Timestamp}}</td>
+			      <td>{{ID}}</td>
+			      <td>{{Name}}</td>
+			    </tr>
+			  </tbody>
+			</table>
 
-		<div id="loader"></div>
+			<script src="//load.sheetsu.com"></script>
 
-		<p id="re"></p>
 
 		</div>
 	</div>
