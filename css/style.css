@@ -91,6 +91,14 @@ h2 {
     margin-bottom: 1.3em;
     text-transform: uppercase;
 }
+th {
+   color: #fff;
+   font-size: 20px;
+}
+td {
+   color: #fff;
+   font-size: 16px;
+}
 .content-wthree input[type="text"], .content-wthree input[type="password"] {
     outline: none;
     font-size: 14px;
