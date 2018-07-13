@@ -91,13 +91,17 @@ h2 {
     margin-bottom: 1.3em;
     text-transform: uppercase;
 }
+table {
+   align: center;
+   width: 24%;
+}
 th {
    color: #fff;
-   font-size: 20px;
+   font-size: 16px;
 }
 td {
    color: #fff;
-   font-size: 16px;
+   font-size: 14px;
 }
 .content-wthree input[type="text"], .content-wthree input[type="password"] {
     outline: none;
