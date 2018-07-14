@@ -96,7 +96,7 @@ h2 {
 	table-layout: fixed;
 	border: 1px solid white;
 	width: 100%;
-	
+	word-break: break-all;
 }
 th {
    color: #fff;
@@ -110,7 +110,6 @@ td {
 
 .gamertag {
    width: 70%;
-   word-wrap: break-word;
 }
 .content-wthree input[type="text"], .content-wthree input[type="password"] {
     outline: none;
