@@ -93,10 +93,11 @@ h1 {
 
 input[type=text] {
   padding: 10px;
-  font-size: 17px;
+  font-size: 18px;
+  color: #fff;
   border: 1px solid white;
   float: center;
-  width: 70%;
+  width: 50%;
   background: Transparent;
 }
 
