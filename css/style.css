@@ -93,7 +93,7 @@ h2 {
 }
 .centerTable { 
 	margin: 0px auto; 
-	table-layout:auto;
+	table-layout:fixed;
 }
 th {
    color: #fff;
