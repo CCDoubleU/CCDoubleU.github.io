@@ -28,6 +28,7 @@ nav.horizontal ul li{	display: inline-block;}/* horizontal menu */
 img{max-width:100%;}
 /*end reset*/
 body {
+    background-image: url("images/rpo.jpg");
     background: linear-gradient(to right bottom, #1cc7d0 ,#013ca6, #013ca6,#1cc7d0);
     /* background: #cd1f46; */
     background-attachment: fixed;
