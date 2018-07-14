@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,18 +5,8 @@
 <link href="css/font-awesome.css" rel="stylesheet"><!-- Font-awesome-CSS --> 
 <link href="css/style.css" rel='stylesheet' type='text/css'/><!-- style.css --> 
 <link href="//fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Basic Login Form Responsive Widget,Login form widgets, Sign up Web forms , Login signup Responsive web form,Flat Pricing table,Flat Drop downs,Registration Forms,News letter Forms,Elements" />
-	<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-		<script>$(document).ready(function(c) {
-		$('.alert-close').on('click', function(c){
-			$('.main-agile').fadeOut('slow', function(c){
-				$('.main-agile').remove();
-			});
-		});	  
-	});
-	</script>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.1/tabletop.min.js'></script>		
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 
 </head>
@@ -28,9 +17,9 @@
 		<!--<div class="circle-w3layouts"></div>-->
 			<input type="text" placeholder="Search.." name="search">
 			<br>
-			<button class="button">Top 20</button>
-			<button class="button">Top 50</button>
-			<button class="button">Show All</button>
+			<button class="button" value=20 onclick="init(this.value)">Top 20</button>
+			<button class="button" value=50 onclick="init(this.value)">Top 50</button>
+			<button class="button" value="data.length" onclick="getvalue(this.value)">Show All</button>
 			<br>
 			<!-- <h2>Leaderboards</h2> -->
 			<table class="centerTable">
@@ -40,27 +29,31 @@
 			    <th>Points</th>
 			  </thead>
 			  <tbody id="table">
-			    	<script src='https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.1/tabletop.min.js'></script>
-				<script language="javascript" type="text/javascript">
+			    	<script language="javascript" type="text/javascript">
 
-				var publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/1D0WmTBaCEgMZLb9ycrbJqnqfim9OcYqCluwM-tZW85I/edit?usp=sharing';
-				var rankingtable = ""
+var publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/1D0WmTBaCEgMZLb9ycrbJqnqfim9OcYqCluwM-tZW85I/edit?usp=sharing';
+var rankingtable = ""
 
-				function init() {
-				    Tabletop.init( { key: publicSpreadsheetUrl,
-						     callback: showInfo,
-						     simpleSheet: true } )
-				}
 
-				function showInfo(data, tabletop) {
-				    console.log(data);
-				    for (i = 0; i < data.length; i++) { 
-					rankingtable += "<tr><td>" + data[i]["Ranking"] + "</td><td class='gamertag'>" + data[i]["Gamer Tag"] + "</td><td>" + data[i]["Points"] + "</td></tr>"
-				    }
-				document.getElementById('table').innerHTML = rankingtable
-				}
+function init(val) {
+    Tabletop.init( { key: publicSpreadsheetUrl,
+                     callback: showInfo,
+                     simpleSheet: true } )
+}
 
-				</script>
+function showInfo(data, tabletop, val) {
+
+    for (i = 0; i < data.length; i++) { 
+        rankingtable += "<tr><td>" + data[i]["Ranking"] + "</td><td>" + data[i]["Gamer Tag"] + "</td><td>" + data[i]["Points"] + "</td></tr>"
+    }
+document.getElementById('table').innerHTML = rankingtable
+}
+
+window.addEventListener('DOMContentLoaded', init)
+
+
+
+</script>
 			  </tbody>
 			</table>
 
