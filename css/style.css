@@ -107,6 +107,10 @@ td {
    font-size: 14px;
    word-wrap:break-word;
 }
+
+.gamertag {
+	width: 70%;
+}
 .content-wthree input[type="text"], .content-wthree input[type="password"] {
     outline: none;
     font-size: 14px;
