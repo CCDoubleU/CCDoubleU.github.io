@@ -91,6 +91,15 @@ h1 {
     border-radius: 87px;
 }*/
 
+input[type=text] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid white;
+  float: center;
+  width: 70%;
+  background: Transparent;
+}
+
 .button {
     background-color: Transparent;
     border: none;
