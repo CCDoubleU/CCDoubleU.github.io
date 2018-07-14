@@ -39,17 +39,30 @@
 			    <th class="gamertag">Gamer Tag</th>
 			    <th>Points</th>
 			  </thead>
-			  <tbody sheetsu="https://sheetsu.com/apis/v1.0su/95d428e740d5">
-			    <tr>
-			      <td>{{Ranking}}</td>
-			      <td class="gamertag">{{Gamer Tag}}</td>
-			      <td>{{Points}}</td>
-			    </tr>
+			  <tbody id="rankingtable">
+			    
+				<script language="javascript" type="text/javascript">
+
+				var publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/1D0WmTBaCEgMZLb9ycrbJqnqfim9OcYqCluwM-tZW85I/edit?usp=sharing';
+				var rankingtable = ""
+
+				function init() {
+				    Tabletop.init( { key: publicSpreadsheetUrl,
+						     callback: showInfo,
+						     simpleSheet: true } )
+				}
+
+				function showInfo(data, tabletop) {
+				    console.log(data);
+				    for (i = 0; i < data.length; i++) { 
+					rankingtable += "<tr><td>" + data[i]["Ranking"] + "</td><td class='gamertag'>" + data[i]["Gamer Tag"] + "</td><td>" + data[i]["Points"] + "</td></tr>"
+				    }
+				document.getElementById('table').innerHTML = rankingtable
+				}
+
+				</script>
 			  </tbody>
 			</table>
-
-			<script src="//load.sheetsu.com"></script>
-
 
 		</div>
 	</div>
