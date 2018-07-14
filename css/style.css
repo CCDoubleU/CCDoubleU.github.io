@@ -90,6 +90,21 @@ h1 {
     left: -4em;
     border-radius: 87px;
 }*/
+
+.button {
+    background-color: Transparent;
+    border: none;
+    color: white;
+    padding: 8px 18px;
+    text-align: center;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.button:hover {
+    color: orange;
+}
+
 h2 {
     color: #fff;
     font-size: 28px;
