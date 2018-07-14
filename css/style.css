@@ -24,11 +24,23 @@ img{max-width:100%;}
 body {
     background-image: url("../images/rpo.jpg");
     background-repeat: no-repeat;
-    /*background: linear-gradient(to right bottom, #1cc7d0 ,#013ca6, #013ca6,#1cc7d0);*/
-    /* background: #cd1f46; 
+    /* Background image is centered vertically and horizontally at all times */
+    background-position: center center;
+  
+    /* Background image doesn't tile */
+    background-repeat: no-repeat;
+  
+    /* Background image is fixed in the viewport so that it doesn't move when 
+     the content's height is greater than the image's height */
     background-attachment: fixed;
-    background-position: center;
-    background-size: cover;*/
+  
+    /* This is what makes the background image rescale based
+     on the container's size */
+    background-size: cover;
+  
+    /* Set a background color that will be displayed
+     while the background image is loading */
+    background-color: #464646;
     font-family: 'Montserrat', sans-serif;
 }
 h1 {
