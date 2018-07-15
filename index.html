@@ -17,9 +17,9 @@
 		<!--<div class="circle-w3layouts"></div>-->
 			<input type="text" placeholder="Search.." name="search">
 			<br>
-			<button class="button" value=20 onclick="init(this.value)">Top 20</button>
-			<button class="button" value=50 onclick="init(this.value)">Top 50</button>
-			<button class="button" value="data.length" onclick="getvalue(this.value)">Show All</button>
+			<button class="button" onclick="location.href=window.location.href.split('?')[0]+'?top=20';">Top 20</button>
+			<button class="button" onclick="location.href=window.location.href.split('?')[0]+'?top=50';">Top 50</button>
+			<button class="button" onclick="location.href=window.location.href.split('?')[0]+'?top=All';">Show All</button>
 			<br>
 			<!-- <h2>Leaderboards</h2> -->
 			<table class="centerTable">
@@ -30,29 +30,47 @@
 			  </thead>
 			  <tbody id="table">
 			    	<script language="javascript" type="text/javascript">
-
 var publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/1D0WmTBaCEgMZLb9ycrbJqnqfim9OcYqCluwM-tZW85I/edit?usp=sharing';
 var rankingtable = ""
-
+var rank = 1
+function GetURLParameter(sParam)
+{
+    var sPageURL = window.location.search.substring(1);
+    var sURLVariables = sPageURL.split('&');
+    for (var i = 0; i < sURLVariables.length; i++) 
+    {
+        var sParameterName = sURLVariables[i].split('=');
+        if (sParameterName[0] == sParam) 
+        {
+            return sParameterName[1];
+        }
+    }
+}
 
 function init(val) {
     Tabletop.init( { key: publicSpreadsheetUrl,
                      callback: showInfo,
-                     simpleSheet: true } )
+                     simpleSheet: true,
+		     orderby: 'points',
+		     reverse: true } )
 }
-
 function showInfo(data, tabletop, val) {
-
-    for (i = 0; i < data.length; i++) { 
-        rankingtable += "<tr><td>" + data[i]["Ranking"] + "</td><td>" + data[i]["Gamer Tag"] + "</td><td>" + data[i]["Points"] + "</td></tr>"
+    var toprank = GetURLParameter('top')
+    if (toprank == null){
+	toprank = 10
+    } else if (toprank == 'All'){
+	toprank = data.length
     }
-document.getElementById('table').innerHTML = rankingtable
+
+    for (i = 0; i < toprank; i++) { 
+        rankingtable += "<tr><td>" + rank + "</td><td>" + data[i]["gamertag"] + "</td><td>" + data[i]["points"] + "</td></tr>"
+	rank += 1
+    }
+    document.getElementById('table').innerHTML = rankingtable
 }
+
 
 window.addEventListener('DOMContentLoaded', init)
-
-
-
 </script>
 			  </tbody>
 			</table>
