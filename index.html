@@ -58,7 +58,7 @@ function showInfo(data, tabletop, val) {
     var toprank = GetURLParameter('top')
     if (toprank == null){
 	toprank = 10
-    } else if (toprank == 'All'){
+    } else if (toprank == 'All' || toprank >= data.length){
 	toprank = data.length
     }
 
