@@ -15,10 +15,10 @@
 	<div class="main-agile">
 		<div class="content-wthree">
 		<!--<div class="circle-w3layouts"></div>-->
-			<input type="text" placeholder="Search.." name="search">
+			<form><input type="text" placeholder="Search Gamer Tag..." name="tag" style='color=white'></form>
 			<br>
-			<button class="button" onclick="location.href=window.location.href.split('?')[0]+'?top=20';">Top 20</button>
-			<button class="button" onclick="location.href=window.location.href.split('?')[0]+'?top=50';">Top 50</button>
+			<button class="button" onclick="location.href=window.location.href.split('?')[0]+'?top=10';">Top 10</button>
+			<button class="button" onclick="location.href=window.location.href.split('?')[0]+'?top=100';">Top 100</button>
 			<button class="button" onclick="location.href=window.location.href.split('?')[0]+'?top=All';">Show All</button>
 			<br>
 			<!-- <h2>Leaderboards</h2> -->
@@ -33,6 +33,9 @@
 var publicSpreadsheetUrl = 'https://docs.google.com/spreadsheets/d/1D0WmTBaCEgMZLb9ycrbJqnqfim9OcYqCluwM-tZW85I/edit?usp=sharing';
 var rankingtable = ""
 var rank = 1
+
+
+
 function GetURLParameter(sParam)
 {
     var sPageURL = window.location.search.substring(1);
@@ -55,16 +58,33 @@ function init(val) {
 		     reverse: true } )
 }
 function showInfo(data, tabletop, val) {
+    var tag = GetURLParameter('tag')
     var toprank = GetURLParameter('top')
-    if (toprank == null){
-	toprank = 10
-    } else if (toprank == 'All' || toprank >= data.length){
-	toprank = data.length
-    }
 
-    for (i = 0; i < toprank; i++) { 
-        rankingtable += "<tr><td>" + rank + "</td><td>" + data[i]["gamertag"] + "</td><td>" + data[i]["points"] + "</td></tr>"
-	rank += 1
+    if (tag != null){
+    	for (i = 0; i < data.length; i++) {
+		if (data[i]["gamertag"].toLowerCase().indexOf(tag.toLowerCase()) >= 0){
+        		rankingtable += "<tr><td>" + rank + "</td><td>" + data[i]["gamertag"] + "</td><td>" + data[i]["points"] + "</td></tr>"
+		}
+		
+		rank += 1
+  	  }
+    } else {
+
+    	if (toprank == null){
+		toprank = 10
+    	} else if (toprank == 'All' || toprank >= data.length || toprank <= 0){
+		toprank = data.length
+   	 }
+
+   	 for (i = 0; i < toprank; i++) { 
+    	    rankingtable += "<tr><td>" + rank + "</td><td>" + data[i]["gamertag"] + "</td><td>" + data[i]["points"] + "</td></tr>"
+		rank += 1
+   	 }
+    	
+    }
+    if (rankingtable == ""){
+	rankingtable += "<tr><td colspan='3'>No Gamer Tag Found!</td></tr>"
     }
     document.getElementById('table').innerHTML = rankingtable
 }
@@ -77,6 +97,6 @@ window.addEventListener('DOMContentLoaded', init)
 
 		</div>
 	</div>
-	
+		
 </body>
 </html>
