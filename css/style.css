@@ -114,9 +114,9 @@ input[type=text] {
     background-color: Transparent;
     border: none;
     color: white;
-    padding: 8px 17px;
+    padding: 8px 14px;
     text-align: center;
-    font-size: 10px;
+    font-size: 12px;
     cursor: pointer;
 }
 
@@ -142,12 +142,12 @@ h2 {
 }
 th {
    color: #fff;
-   font-size: 14px;
+   font-size: 13px;
    font-weight: bold;
 }
 td {
    color: #fff;
-   font-size: 12px;
+   font-size: 11px;
 
 }
 
