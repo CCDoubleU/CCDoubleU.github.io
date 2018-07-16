@@ -147,6 +147,7 @@ td {
 .gamertag {
    width: 50%;
 }
+/*
 .content-wthree input[type="text"], .content-wthree input[type="password"] {
     outline: none;
     font-size: 14px;
@@ -198,7 +199,7 @@ td {
     letter-spacing: 1px;
     text-transform: capitalize;
 }
-/*--//footer--*/
+/*--//footer--
 .footer-w3l p{
 	margin:0 auto;
 	text-align:center;
